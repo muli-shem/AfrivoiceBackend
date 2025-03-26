@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { PostsService, createPostService, getPostsService, updatePostService, deletePostService } from "../posts/posts.service";
+import { PostsService, createPostService, getPostsService, updatePostService, deletePostService } from "./posts.Service";
 import { posts } from "../drizzle/schema";
 
 export const listPosts = async (C:Context)=>{
