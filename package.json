@@ -1,0 +1,45 @@
+{
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "gen": "drizzle-kit generate",
+    "migrate": " tsx src/drizzle/migrate.ts",
+    "start": "node ./dist/index.js",
+    "studio": "drizzle-kit studio",
+    "push": " drizzle-kit push"
+  },
+  "dependencies": {
+    "@cloudinary/url-gen": "^1.21.0",
+    "@hono/node-server": "^1.11.2",
+    "@hono/prometheus": "^1.0.1",
+    "@hono/zod-validator": "^0.2.2",
+    "@neondatabase/serverless": "^0.9.3",
+    "@types/pg": "^8.11.6",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.31.1",
+    "hono": "^4.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "migrate": "^2.1.0",
+    "multer": "1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.13",
+    "prom-client": "^15.1.2",
+    "stripe": "^16.2.0",
+    "winston": "^3.17.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jquery": "^3.5.30",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.11.17",
+    "@types/node-cron": "^3.0.11",
+    "@types/nodemailer": "^6.4.15",
+    "drizzle-kit": "^0.22.2",
+    "tsx": "^4.7.1"
+  }
+}

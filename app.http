@@ -1,0 +1,175 @@
+###
+ GET http://localhost:8080/api/comments
+###
+GET http://localhost:8080/api/mediafiles
+###
+GET http://localhost:8080/api/users/17
+
+###
+POST  http://localhost:8080/api/users
+//user and admin
+Content-Type: application/json
+
+{ 
+
+   "username": "shem muli josh",
+    "email": "shemmuli123@gmail.com",
+    "password_hash": "1234567890",
+    "profile_photo": "jpeg",
+    "location": "machakos kathiani"
+}
+###
+
+PUT  http://localhost:8080/api/users/17
+Content-Type: application/json
+
+{ 
+    "username": "shem muli  m",
+    "email": "shemmuli123r@gmail.com",
+    "password_hash": "1234567890",
+    "profile_photo": "jpeg",
+    "location": "machakos kathiani"
+  
+}
+###
+DELETE http://localhost:8080/api/users/2
+
+###
+ GET http://localhost:8080/api/leaders
+###
+ GET http://localhost:8080/api/leaders/2
+
+###
+POST  http://localhost:8080/api/leaders
+//user and admin
+Content-Type: application/json
+
+{ 
+
+    "name": "Robert Mbui",
+    "position": "MP",
+    "county": "Machakos",
+    "sub_county": "kathiani",
+    "ward": "Upper Kaewa ",
+    "manifesto": "School to be improved",
+    "photo_url": "url"
+}
+###
+
+PUT  http://localhost:8080/api/leaders/17
+Content-Type: application/json
+
+{ 
+    "username": "shem muli  m",
+    "email": "shemmuli123r@gmail.com",
+    "password_hash": "1234567890",
+    "profile_photo": "jpeg",
+    "location": "machakos kathiani"
+  
+}
+###
+DELETE http://localhost:8080/api/leader_communications/2
+
+###
+ GET http://localhost:8080/api/leader_communications
+###
+ GET http://localhost:8080/api/leader_communications/2
+
+###
+POST  http://localhost:8080/api/leader_communications
+//user and admin
+Content-Type: application/json
+
+{ 
+
+    "name": "Robert Mbui",
+    "position": "MP",
+    "county": "Machakos",
+    "sub_county": "kathiani",
+    "ward": "Upper Kaewa ",
+    "manifesto": "School to be improved",
+    "photo_url": "url"
+}
+###
+
+PUT  http://localhost:8080/api/leader_communications/17
+Content-Type: application/json
+
+{ 
+    "username": "shem muli  m",
+    "email": "shemmuli123r@gmail.com",
+    "password_hash": "1234567890",
+    "profile_photo": "jpeg",
+    "location": "machakos kathiani"
+  
+}
+//posting auth_on_users
+###
+POST http://localhost:8080/api/register
+Content-Type: application/json
+
+{
+   "username": "Mary Ree",
+  "email": "maryvaati855@gmail.com",
+  "password_hash": "mary#1234",
+  "county": "Kitui",
+  "sub_county": "Kitui",
+  "ward": "Ikutha",
+  "role": "citizen"
+}
+
+###
+//loging in auth_on_users
+POST  http://localhost:8080/api/login
+Content-Type: application/json
+
+{
+   
+   "email": "luvongatimoth@gmail.com",
+    "password": "timothy#1234"
+}
+
+###
+//cloudinary
+POST  http://localhost:8080/api/cloudinary/upload
+Content-Type: multipart/form; boundary=MyBoundary
+
+{
+    "id": 20,
+    "image": "image"
+}
+###
+//cloudary
+
+POST http://localhost:8080/api/cloudinary/upload
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="id"
+
+20
+--MyBoundary
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/jpeg
+
+@C:/Users/shem/Desktop/KenDev/Afrivoice/Backend/uploads/test.jpg
+--MyBoundary--
+
+###
+
+POST http://localhost:8080/api/cloudinary/upload
+Content-Type: multipart/form-data; boundary=MyBoundary
+
+--MyBoundary
+Content-Disposition: form-data; name="userId"
+
+20
+--MyBoundary
+
+Content-Disposition: form-data; name="image"; filename="test.jpg"
+Content-Type: image/jpeg
+
+< C:/Users/shem/Desktop/KenDev/Afrivoice/Backend/uploads/test.jpg
+--MyBoundary--
+
+
