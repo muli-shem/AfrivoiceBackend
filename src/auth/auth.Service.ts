@@ -7,7 +7,7 @@ import { authValidator, loginSchema, userValidator } from "../validator";
 import { sendMail } from "../nodemailer/mails"; // Importing the sendMail function from the mail utility
 
 const secret = process.env.SECRET;
-const expiresIn = process.env.ExPIRESIN;
+const expiresIn = process.env.EXPIRESIN;
 
 export const registerUser = async(user:any)=>{
     userValidator.parse(user); //Validating the user object against the schema 
