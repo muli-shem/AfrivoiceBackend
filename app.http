@@ -3,7 +3,7 @@
 ###
 GET http://localhost:8080/api/mediafiles
 ###
-GET http://localhost:8080/api/users/17
+GET https://afrivoicebackend.onrender.com/api/users/20
 
 ###
 POST  http://localhost:8080/api/users
@@ -32,7 +32,7 @@ Content-Type: application/json
   
 }
 ###
-DELETE http://localhost:8080/api/users/2
+GET http://localhost:8080/api/users/20
 
 ###
  GET http://localhost:8080/api/leaders

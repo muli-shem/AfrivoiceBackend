@@ -15,11 +15,22 @@ export const UsersService = async (limit?:number):Promise<TSUsers []| null> =>{
     return await db.query.users.findMany();
 }
 
-export const getUsersService = async (id:number):Promise<TIUsers| undefined> =>{
-    return await db.query.users.findFirst({
-        where:
-            eq(users.id, id)
-       })
+export const getUsersService = async (user_id: number) => {
+    // Fetch user, but explicitly select only the fields you want
+    const user = await db.select({
+        id: users.id,
+        username: users.username,
+        email: users.email,
+        profilePhoto: users.profile_photo,
+        county: users.county,
+        subCounty: users.sub_county,
+        ward: users.ward,
+        // Exclude sensitive fields like password_hash
+    }).from(users)
+    .where(eq(users.id, user_id))
+    .execute().then(results => results[0]);
+
+    return user;
 }
 
 export const cretaeUsersService = async(Users:TIUsers)=>{
