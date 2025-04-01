@@ -4,6 +4,7 @@ import { sendMail } from "../nodemailer/mails"; // Import the sendMail utility
 import db from "../drizzle/db"; // Import your database instance
 import { eq } from "drizzle-orm";
 import crypto from "crypto";
+import bcrypt from "bcrypt";
 
 
 export const UsersService = async (limit?:number):Promise<TSUsers []| null> =>{
@@ -78,3 +79,33 @@ export const resetPassword = async (email: string) => {
     await sendMail(process.env.MAIL_USERNAME!, email, subject, html);
     return "Password reset email sent successfully";
 };
+export const updatePassword = async (token: string, password: string) => {
+    // Find the user with this reset token
+    const existingUser = await db.select().from(users).where(eq(users.reset_token, token)).execute();
+    
+    if (existingUser.length === 0) {
+      throw new Error("Invalid or expired reset token");
+    }
+    
+    const user = existingUser[0];
+    
+    // Check if token is expired
+    if (!user.reset_token_expiration || user.reset_token_expiration < new Date()) {
+      throw new Error("Reset token has expired");
+    }
+    
+    // Hash the new password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    // Update user with new password and clear reset token fields
+    await db.update(users)
+      .set({
+        password_hash: hashedPassword,
+        reset_token: null,
+        reset_token_expiration: null
+      })
+      .where(eq(users.id, user.id))
+      .execute();
+    
+    return "Password has been reset successfully";
+  };

@@ -18,7 +18,7 @@ import {educationRouter} from "./education/education.Router";
 import {projectsRouter} from "./projects/projects.Router";
 import { commentsRouter } from './comments/comments.Router'
 import { feedbackRouter } from './feedbackreports/feedbackreports.Router'
-
+import { mediaFilesRouter } from './mediafiles/mediafiles.Router'
 
 
 const app = new Hono()
@@ -58,6 +58,7 @@ app.route('/api', educationRouter);
 app.route('/api', projectsRouter);
 app.route('/api', commentsRouter)
 app.route('/api', feedbackRouter)
+app.route('/api', mediaFilesRouter)
 
 
 

@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { UsersService,cretaeUsersService,getUsersService ,updateUsersService, deleteUsersService,resetPassword} from "./users.Service";
+import { UsersService,cretaeUsersService,getUsersService ,updateUsersService, deleteUsersService,resetPassword, updatePassword} from "./users.Service";
 import { users } from "../drizzle/schema"; // Import the users table schema
 
 
@@ -86,3 +86,17 @@ export const resetPasswordController = async (ctx: Context) => {
         return ctx.json({ error: error.message || "An error occurred" }, 500); // Return error response
     }
 };
+export const updatePasswordController = async (ctx: Context) => {
+    try {
+      const { token, password } = await ctx.req.json();
+      if (!token || !password) {
+        return ctx.json({ error: "Token and password are required" }, 400);
+      }
+  
+      const result = await updatePassword(token, password);
+      return ctx.json({ message: result }, 200);
+    } catch (error: any) {
+      console.error(error);
+      return ctx.json({ error: error.message || "An error occurred" }, 500);
+    }
+  };
