@@ -4,7 +4,7 @@ import { sendMail } from "../nodemailer/mails"; // Import the sendMail utility
 import db from "../drizzle/db"; // Import your database instance
 import { eq } from "drizzle-orm";
 import crypto from "crypto";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs"; 
 
 
 export const UsersService = async (limit?:number):Promise<TSUsers []| null> =>{
